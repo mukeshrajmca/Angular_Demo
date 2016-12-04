@@ -1,0 +1,17 @@
+<div>
+<a href="#add">Add Person</a><br/><br/>
+ <table border="1">
+<tr>
+<th>First Name</th>
+<th>Last Name</th>     
+<th>Age</th>
+<th>Options</th>
+</tr>
+<tr ng-repeat="person in persons">
+    <td>{{person.fname}}</td>
+    <td>{{person.lname}}</td>
+    <td>{{person.age}}</td>
+    <td><a href="#">Edit</a></td>
+</tr>
+</table>
+</div>

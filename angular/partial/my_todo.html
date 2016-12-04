@@ -1,0 +1,78 @@
+<!doctype html>
+<html>
+<head>
+<style>
+    table#header th{
+        background: gray;
+        padding: 10px;
+    }
+    table#header{
+        width:50%;
+    }
+    table#data th{
+        background: lightblue;
+        padding: 10px;
+        width: 41.5%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+    table th,td{
+        border: 1px solid gray;
+        border-collapse: collapse;
+        padding: 8px;
+    }
+    table tr:nth-child(even){
+        background: blue;
+        
+    }
+    table tr:nth-child(odd){
+        background: pink;
+    }
+    table#header tr th input[type=text]{
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+table#data tr td a{
+     color:red; 
+     text-decoration: none;
+    }
+</style>
+<title> My todo app</title>
+<script src="../js/angular.js"></script>
+<script src="../js/controller/mytodo.js"></script>
+</head>
+<body ng-app="myApp" ng-controller="homeCtrl">
+<form name="myform">
+<table id ="header">
+    <tr><th>Enter First Name <input ng-model="person.fname" type="text" autofocus value="{{person.fname}}" required/></th>
+     <td><span ng-show="myform.fname.$error.required">Required!</span></td>
+    </tr>
+    <tr><th>Enter Last Name <input ng-model="person.lname" type="text"/></th></tr>
+    <tr><th>Enter Mobile No <input ng-model="person.mobile" type="text"/></th></tr>
+</table>
+ <input type="submit" value="Save" ng-click="save();"/>
+</form>
+<table border="1" id="data">
+<tr>
+<th>First Name</th>
+<th>Last Name</th>
+<th>Mobile No</th>
+<th colspan="2">Option</th>
+</tr>
+<tr ng-repeat="person in persons">
+    <td><label><span ng-bind="person.fname" ng-hide="person.editPerson"></span><input type="text" ng-model="person.fname" ng-show="person.editPerson" class="fname"/></label></td>
+    <td><label><span ng-bind="person.lname" ng-hide="person.editPerson"></span><input type="text" ng-model="person.lname"/ ng-show="person.editPerson"></label></td>
+    <td><label><span ng-bind="person.mobile" ng-hide="person.editPerson"></span><input type="text" ng-model="person.mobile" ng-show="person.editPerson"/></label></td>
+<td><a href="#" ng-click="remove(person)">Delete</a></td>
+<td><a href="#" ng-click="edit(person);">{{person.option}}</a></td>
+</tr>
+</table>
+</body>
+</html>

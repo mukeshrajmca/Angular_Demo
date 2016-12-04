@@ -1,0 +1,20 @@
+<!doctype html>
+<html>
+<head>
+<title> My todo app</title>
+<script src="../js/angular.js"></script>
+<script src="../js/controller/service.js"></script>
+</head>
+<body ng-app="myApp">
+    <div ng-controller="firstCtrl">
+        <p><input type="text" ng-model="person.name" /></p>
+        {{person.name}}
+                {{person.fullName()}}
+    </div>
+    <div ng-controller="secondCtrl">
+        <p><input type="text" ng-model="person.name" /></p>
+        {{person.name|uppercase}}
+        {{person.fullName()|lowercase}}
+    </div>
+</body>
+</html>
